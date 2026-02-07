@@ -15,7 +15,7 @@ make run
 ## С кастомными параметрами
 
 ```bash
-make run LOGFILE='название_файла' LOGLEVEL='УРОВЕНЬ'
+make run LOGFILE='название_файла.log' LOGLEVEL='УРОВЕНЬ'
 ```
 
 Доступные уровни: `LOW`, `MIDDLE`, `HIGH`
@@ -43,5 +43,6 @@ make lib    # Собрать только библиотеку
 make app    # Собрать только приложение
 make clean  # Удалить артефакты сборки
 ```
+
 
 
