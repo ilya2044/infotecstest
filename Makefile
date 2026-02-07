@@ -1,4 +1,4 @@
-.PHONY: all lib app clean run
+.PHONY: all lib app clean run test
 
 CXX := g++
 CXXFLAGS := -std=c++17 -Wall -Wextra -fPIC
@@ -17,6 +17,10 @@ LOGGER_LIB := $(BIN_DIR)/liblogger.so
 MAIN_SRC := $(SRC_DIR)/main.cpp
 MAIN_OBJ := $(OBJ_DIR)/main.o
 MAIN_BIN := $(BIN_DIR)/logger_app
+
+TEST_SRC := test/test_logger.cpp
+TEST_OBJ := $(OBJ_DIR)/test_logger.o
+TEST_BIN := $(BIN_DIR)/test_logger
 
 all: lib app
 
@@ -53,3 +57,12 @@ LOGLEVEL ?= MEDIUM
 
 run: app
 	$(MAIN_BIN) $(LOGFILE) $(LOGLEVEL)
+
+$(TEST_OBJ): $(TEST_SRC) | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $(TEST_SRC) -o $(TEST_OBJ)
+
+$(TEST_BIN): $(TEST_OBJ) $(LOGGER_LIB)
+	$(CXX) $(TEST_OBJ) -o $(TEST_BIN) $(LDFLAGS) -llogger
+
+test: $(TEST_BIN)
+	@$(TEST_BIN)
