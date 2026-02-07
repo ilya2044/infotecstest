@@ -1,0 +1,14 @@
+obj/
+bin/
+*.o
+*.so
+*.a
+*.out
+*.log
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+task.md
