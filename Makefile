@@ -52,7 +52,7 @@ clean:
 	@rm -rf $(OBJ_DIR)
 	@rm -rf $(BIN_DIR)
 
-LOGFILE ?= default.txt
+LOGFILE ?= default.log
 LOGLEVEL ?= MEDIUM
 
 run: app
